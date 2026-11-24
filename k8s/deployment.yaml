@@ -4,7 +4,7 @@ metadata:
   name: eventdesk
   namespace: eventdesk
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels: {app: eventdesk}
   template:
@@ -28,7 +28,7 @@ spec:
           #         name: <secret name>
           #         key: <secret key>
           readinessProbe:
-            httpGet: {path: /readyz, port: 8000}
+            httpGet: {path: /live, port: 8000}
             periodSeconds: 2
           livenessProbe:
             httpGet: {path: /live, port: 8000}
