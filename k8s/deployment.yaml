@@ -4,7 +4,7 @@ metadata:
   name: eventdesk
   namespace: eventdesk
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels: {app: eventdesk}
   template:
@@ -20,15 +20,14 @@ spec:
           envFrom:
             - configMapRef:
                 name: eventdesk-config
-          # Task 3: add env here; keep envFrom above.
-          # env:
-          #   - name: DEMO_TOKEN
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: <secret name>
-          #         key: <secret key>
+          env:
+            - name: DEMO_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: eventdesk-secret
+                  key: DEMO_TOKEN
           readinessProbe:
-            httpGet: {path: /readyz, port: 8000}
+            httpGet: {path: /ready, port: 8000}
             periodSeconds: 2
           livenessProbe:
             httpGet: {path: /live, port: 8000}

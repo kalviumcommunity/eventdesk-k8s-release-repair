@@ -4,5 +4,5 @@ metadata:
   name: eventdesk-config
   namespace: eventdesk
 data:
-  APP_ENV: development
-  BANNER: EventDesk preview
+  APP_ENV: campus
+  BANNER: Campus Events
