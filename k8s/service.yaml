@@ -7,4 +7,4 @@ spec:
   selector: {app: eventdesk}
   ports:
     - port: 80
-      targetPort: 8001
+      targetPort: 8000
